@@ -1,3 +1,8 @@
+/* Home sahifasida tepadagi bo'sh joyni olib tashlash */
+:host {
+  padding-top: 0 !important;
+}
+
 /* Main Container */
 .main-container {
   max-width: 1200px;
