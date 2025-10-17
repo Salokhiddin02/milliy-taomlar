@@ -1,7 +1,12 @@
 <nav class="navbar">
-  <a routerLink="/" (click)="onHomeClick()" class="nav-link" style="cursor: pointer;">Home</a> |
-  <a routerLink="/taomlar" class="nav-link">Taomlar</a> |
-  <a routerLink="/professional-maslahatlar" class="nav-link">Professional Maslahatlar</a>
+  <div class="nav-left">
+    <a routerLink="/" (click)="onHomeClick()" class="nav-link" style="cursor: pointer;">Home</a> |
+    <a routerLink="/taomlar" class="nav-link">Taomlar</a> |
+    <a routerLink="/professional-maslahatlar" class="nav-link">Professional Maslahatlar</a>
+  </div>
+  <button class="theme-toggle" (click)="toggleTheme()" [attr.aria-label]="isDarkMode ? 'Kunduzgi rejimga o\'tish' : 'Tungi rejimga o\'tish'">
+    <span class="theme-icon">{{ isDarkMode ? '☀️' : '🌙' }}</span>
+  </button>
 </nav>
 
 <router-outlet></router-outlet>

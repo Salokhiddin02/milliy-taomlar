@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './home.html',
-  styleUrl: './home.css'
+  styleUrl: './home.css',
 })
 export class Home {
   constructor(private router: Router) {}
@@ -16,9 +16,8 @@ export class Home {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-
   onGlobalDishesSectionClick = () => {
-    console.log('Global Taomlar bo\'limi clicked!');
+    console.log("Global Taomlar bo'limi clicked!");
     window.open('/global-taomlar', '_blank');
   };
 }
