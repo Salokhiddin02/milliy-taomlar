@@ -1,12 +1,41 @@
 <nav class="navbar">
-  <div class="nav-left">
-    <a routerLink="/" (click)="onHomeClick()" class="nav-link" style="cursor: pointer;">Home</a> |
-    <a routerLink="/taomlar" class="nav-link">Taomlar</a> |
-    <a routerLink="/professional-maslahatlar" class="nav-link">Professional Maslahatlar</a>
+  <!-- Logo -->
+  <div class="nav-logo">
+    <a routerLink="/" (click)="onHomeClick()" class="logo-link">
+      <span class="logo-text">milliy</span>
+    </a>
   </div>
-  <button class="theme-toggle" (click)="toggleTheme()" [attr.aria-label]="isDarkMode ? 'Kunduzgi rejimga o\'tish' : 'Tungi rejimga o\'tish'">
-    <span class="theme-icon">{{ isDarkMode ? '☀️' : '🌙' }}</span>
-  </button>
+
+  <!-- Navigation Links -->
+  <div class="nav-links">
+    <div class="nav-dropdown">
+      <a href="#" class="nav-link">Hafta menyusi <span class="dropdown-arrow">▼</span></a>
+    </div>
+    <div class="nav-dropdown">
+      <a href="#" class="nav-link">Retseptlar <span class="dropdown-arrow">▼</span></a>
+    </div>
+    <a routerLink="/pages/contact" class="nav-link">Kontaktlar</a>
+  </div>
+
+  <!-- Right Side -->
+  <div class="nav-right">
+    <!-- Language Selector -->
+    <div class="language-selector">
+      <span class="flag-icon">🇺🇿</span>
+      <span class="language-text">O'zbek</span>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+      <input type="text" placeholder="Retseptni topish" class="search-input">
+      <div class="search-icon">🔍</div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" (click)="toggleTheme()" [attr.aria-label]="isDarkMode ? 'Kunduzgi rejimga o\'tish' : 'Tungi rejimga o\'tish'">
+      <span class="theme-icon">{{ isDarkMode ? '☀️' : '🌙' }}</span>
+    </button>
+  </div>
 </nav>
 
 <router-outlet></router-outlet>
