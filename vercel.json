@@ -1,0 +1,9 @@
+{
+  "buildCommand": "ng build",
+  "outputDirectory": "dist/milliy-taomlar/browser",
+  "framework": "angular",
+  "installCommand": "npm install",
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+}
+
+
