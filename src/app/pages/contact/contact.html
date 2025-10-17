@@ -1,0 +1,266 @@
+<div class="contact-container">
+  <div class="hero-section">
+    <h1>📞 Biz Bilan Bog'laning</h1>
+    <p class="hero-description">Milliy taomlar haqida savollar yoki takliflar uchun bizga yozing</p>
+  </div>
+
+  <div class="contact-content">
+    <div class="contact-info-section">
+      <h2>Kontakt Ma'lumotlari</h2>
+      
+      <div class="contact-cards">
+        <div class="contact-card">
+          <div class="contact-icon">📧</div>
+          <div class="contact-details">
+            <h3>Email</h3>
+            <p>info@milliy-taomlar.uz</p>
+            <span>support@milliy-taomlar.uz</span>
+          </div>
+        </div>
+        
+        <div class="contact-card">
+          <div class="contact-icon">📱</div>
+          <div class="contact-details">
+            <h3>Telefon</h3>
+            <p>+998 90 123 45 67</p>
+            <span>+998 71 234 56 78</span>
+          </div>
+        </div>
+        
+        <div class="contact-card">
+          <div class="contact-icon">📍</div>
+          <div class="contact-details">
+            <h3>Manzil</h3>
+            <p>Toshkent shahri</p>
+            <span>Yunusobod tumani, Navoiy ko'chasi 15</span>
+          </div>
+        </div>
+        
+        <div class="contact-card">
+          <div class="contact-icon">🕒</div>
+          <div class="contact-details">
+            <h3>Ish Vaqti</h3>
+            <p>Dushanba - Juma</p>
+            <span>09:00 - 18:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="social-media">
+        <h3>Ijtimoiy Tarmoqlar</h3>
+        <div class="social-links">
+          <a href="#" class="social-link">📘 Facebook</a>
+          <a href="#" class="social-link">📷 Instagram</a>
+          <a href="#" class="social-link">🐦 Twitter</a>
+          <a href="#" class="social-link">📺 YouTube</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="contact-form-section">
+      <h2>Xabar Yuborish</h2>
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">Ism *</label>
+            <input 
+              type="text" 
+              id="firstName" 
+              formControlName="firstName"
+              placeholder="Ismingizni kiriting"
+              [class.error]="isFieldInvalid('firstName')">
+            <div class="error-message" *ngIf="isFieldInvalid('firstName')">
+              Ism kiritish majburiy
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="lastName">Familiya</label>
+            <input 
+              type="text" 
+              id="lastName" 
+              formControlName="lastName"
+              placeholder="Familiyangizni kiriting">
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input 
+              type="email" 
+              id="email" 
+              formControlName="email"
+              placeholder="Emailingizni kiriting"
+              [class.error]="isFieldInvalid('email')">
+            <div class="error-message" *ngIf="isFieldInvalid('email')">
+              To'g'ri email manzil kiriting
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Telefon</label>
+            <input 
+              type="tel" 
+              id="phone" 
+              formControlName="phone"
+              placeholder="+998 90 123 45 67">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="subject">Mavzu *</label>
+          <select id="subject" formControlName="subject" [class.error]="isFieldInvalid('subject')">
+            <option value="">Mavzuni tanlang</option>
+            <option value="recipe">Retsept haqida savol</option>
+            <option value="suggestion">Taklif</option>
+            <option value="complaint">Shikoyat</option>
+            <option value="partnership">Hamkorlik</option>
+            <option value="other">Boshqa</option>
+          </select>
+          <div class="error-message" *ngIf="isFieldInvalid('subject')">
+            Mavzuni tanlang
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Xabar *</label>
+          <textarea 
+            id="message" 
+            formControlName="message" 
+            rows="6" 
+            placeholder="Xabaringizni batafsil yozing..."
+            [class.error]="isFieldInvalid('message')"></textarea>
+          <div class="error-message" *ngIf="isFieldInvalid('message')">
+            Xabar matni kiritish majburiy (kamida 10 ta belgi)
+          </div>
+        </div>
+        
+        <div class="form-group checkbox-group">
+          <label class="checkbox-label">
+            <input type="checkbox" formControlName="newsletter">
+            <span class="checkmark"></span>
+            Yangiliklar va maxsus takliflar haqida xabar olishni xohlayman
+          </label>
+        </div>
+        
+        <button 
+          type="submit" 
+          class="submit-btn"
+          [disabled]="contactForm.invalid || isSubmitting">
+          <span *ngIf="!isSubmitting">📤 Xabar Yuborish</span>
+          <span *ngIf="isSubmitting">⏳ Yuborilmoqda...</span>
+        </button>
+      </form>
+      
+      <div class="success-message" *ngIf="showSuccessMessage">
+        ✅ Xabaringiz muvaffaqiyatli yuborildi! Tez orada javob beramiz.
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Actions Section -->
+  <div class="quick-actions-section">
+    <h2>Tezkor Aloqa</h2>
+    <div class="quick-actions">
+      <a href="tel:+998901234567" class="quick-action-btn call-btn">
+        <div class="action-icon">📞</div>
+        <div class="action-text">
+          <h3>Qo'ng'iroq Qiling</h3>
+          <p>+998 90 123 45 67</p>
+        </div>
+      </a>
+      
+      <a href="mailto:info@milliy-taomlar.uz" class="quick-action-btn email-btn">
+        <div class="action-icon">📧</div>
+        <div class="action-text">
+          <h3>Email Yuboring</h3>
+          <p>info@milliy-taomlar.uz</p>
+        </div>
+      </a>
+      
+      <button class="quick-action-btn chat-btn" (click)="openChat()">
+        <div class="action-icon">💬</div>
+        <div class="action-text">
+          <h3>Onlayn Chat</h3>
+          <p>24/7 yordam</p>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Map Section -->
+  <div class="map-section">
+    <h2>Bizning Joylashuvimiz</h2>
+    <div class="map-container">
+      <div class="map-placeholder">
+        <div class="map-icon">🗺️</div>
+        <h3>Toshkent shahri, Yunusobod tumani</h3>
+        <p>Navoiy ko'chasi 15</p>
+        <div class="map-actions">
+          <button class="map-btn" (click)="openInGoogleMaps()">Google Maps'da ko'rish</button>
+          <button class="map-btn" (click)="getDirections()">Yo'l ko'rsatish</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Stats -->
+  <div class="stats-section">
+    <h2>Bizning Xizmatlarimiz</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">Yordam</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">< 2</div>
+        <div class="stat-label">Soat Javob</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">1000+</div>
+        <div class="stat-label">Mamnun Mijozlar</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">5+</div>
+        <div class="stat-label">Yillik Tajriba</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ Section -->
+  <div class="faq-section">
+    <h2>Tez-tez So'raladigan Savollar</h2>
+    <div class="faq-container">
+      <div class="faq-item" *ngFor="let faq of faqs; let i = index">
+        <div class="faq-question" (click)="toggleFaq(i)">
+          <h3>{{ faq.question }}</h3>
+          <span class="faq-icon" [class.open]="faq.open">+</span>
+        </div>
+        <div class="faq-answer" [class.open]="faq.open">
+          <p>{{ faq.answer }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonials Section -->
+  <div class="testimonials-section">
+    <h2>Mijozlarimizning Fikrlari</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card" *ngFor="let testimonial of testimonials">
+        <div class="testimonial-content">
+          <div class="quote-icon">"</div>
+          <p>{{ testimonial.message }}</p>
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">{{ testimonial.name.charAt(0) }}</div>
+          <div class="author-info">
+            <h4>{{ testimonial.name }}</h4>
+            <span>{{ testimonial.location }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

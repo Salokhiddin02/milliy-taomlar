@@ -1,0 +1,84 @@
+<div class="taomlar-container">
+  <h1>🍽️ Mashhur Milliy Taomlar</h1>
+  <p class="page-description">Dunyoning eng mashhur milliy taomlarini kashf qiling va ularni tayyorlash usullarini o'rganing</p>
+  
+  <div class="taomlar-grid">
+    @for (taom of taomlar; track taom.id) {
+      <div class="taom-card">
+        <div class="taom-image">{{ taom.emoji }}</div>
+        <h3>{{ taom.nomi }}</h3>
+        <p>{{ taom.tavsif }}</p>
+        <div class="taom-info">
+          <span class="country">{{ taom.mamlakat }}</span>
+          <span class="time">⏱️ {{ taom.vaqt }}</span>
+        </div>
+        <div class="taom-actions">
+          <a [routerLink]="['/retsept', taom.id]" class="recipe-btn">
+            📖 Retseptni Ko'rish
+          </a>
+        </div>
+      </div>
+    }
+  </div>
+  
+  <!-- Cooking Methods Overview -->
+  <div class="cooking-methods-overview">
+    <h2>🔥 Tayyorlash Usullari</h2>
+    <div class="methods-grid">
+      <div class="method-card">
+        <div class="method-icon">🍳</div>
+        <h3>Qovurish</h3>
+        <p>Ingredientlarni moyda qovurish - O'zbek palovi, pizza va boshqalar</p>
+        <ul>
+          <li>Yog'ni qizdirish</li>
+          <li>Go'sht va sabzavotlarni qovurish</li>
+          <li>Xushbo'y hid va ta'm</li>
+        </ul>
+      </div>
+      
+      <div class="method-card">
+        <div class="method-icon">🥘</div>
+        <h3>Pishirish</h3>
+        <p>Guruch va makaronlarni suv bilan pishirish</p>
+        <ul>
+          <li>Suv miqdorini to'g'ri hisoblash</li>
+          <li>Pishish vaqtini nazorat qilish</li>
+          <li>Yumshoq va mazali natija</li>
+        </ul>
+      </div>
+      
+      <div class="method-card">
+        <div class="method-icon">🔥</div>
+        <h3>Qaynatish</h3>
+        <p>Sho'rva va suyuq taomlarni tayyorlash</p>
+        <ul>
+          <li>Barcha ingredientlarni birga qaynatish</li>
+          <li>Sho'rva tayyorlash</li>
+          <li>Xushbo'y hidli natija</li>
+        </ul>
+      </div>
+      
+      <div class="method-card">
+        <div class="method-icon">🍣</div>
+        <h3>Xom ishlatish</h3>
+        <p>Balik va dengiz mahsulotlarini xom holda ishlatish</p>
+        <ul>
+          <li>Balikni tozalash</li>
+          <li>Guruch bilan aralashtirish</li>
+          <li>Tabiiy ta'm saqlash</li>
+        </ul>
+      </div>
+
+      <div class="method-card">
+        <div class="method-icon">🥧</div>
+        <h3>Pishirish (Oven)</h3>
+        <p>Pishirgichda pishirish - non, pirog va boshqalar</p>
+        <ul>
+          <li>Temperaturani nazorat qilish</li>
+          <li>Pishish vaqtini hisoblash</li>
+          <li>Qizil qobiq va yumshoq ichki qism</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

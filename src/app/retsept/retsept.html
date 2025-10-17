@@ -1,0 +1,116 @@
+@if (retsept) {
+<div class="retsept-container">
+  <!-- Header Section -->
+  <div class="retsept-header">
+    <div class="retsept-title">
+      <h1>{{ retsept!.emoji }} {{ retsept!.nomi }}</h1>
+      <div class="retsept-meta">
+        <span class="country">🇺🇿 {{ retsept!.mamlakat }}</span>
+        <span class="time">⏱️ {{ retsept!.vaqt }}</span>
+        <span class="servings">👥 {{ retsept!.kishi }} kishi</span>
+        <span class="difficulty">📊 {{ retsept!.qiyinlik }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="retsept-content">
+    <!-- Ingredients Section -->
+    <div class="ingredients-section">
+      <h2>🥘 Ingredientlar</h2>
+      <div class="ingredients-grid">
+        @for (ingredient of retsept!.ingredientlar; track ingredient) {
+          <div class="ingredient-item">
+            <span class="ingredient-icon">📦</span>
+            <span class="ingredient-text">{{ ingredient }}</span>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Cooking Methods Section -->
+    <div class="methods-section">
+      <h2>🔥 Tayyorlash Usullari</h2>
+      <div class="methods-grid">
+        <div class="method-card">
+          <div class="method-icon">🍳</div>
+          <h3>Qovurish</h3>
+          <p>Go'sht va sabzavotlarni moyda qovurish</p>
+        </div>
+        <div class="method-card">
+          <div class="method-icon">🥘</div>
+          <h3>Pishirish</h3>
+          <p>Guruchni suv bilan pishirish</p>
+        </div>
+        <div class="method-card">
+          <div class="method-icon">🔥</div>
+          <h3>Qaynatish</h3>
+          <p>Barcha ingredientlarni birga qaynatish</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step by Step Instructions -->
+    <div class="instructions-section">
+      <h2>📝 Tayyorlash Yo'riqnomasi</h2>
+      <div class="steps-container">
+        @for (qadam of retsept!.qadamlar; track qadam; let i = $index) {
+          <div class="step-item">
+            <div class="step-number">{{ i + 1 }}</div>
+            <div class="step-content">
+              <p>{{ qadam }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Cooking Tips -->
+    <div class="tips-section">
+      <h2>💡 Oshpazlik Maslahatlari</h2>
+      <div class="tips-grid">
+        @for (maslahat of retsept!.maslahatlar; track maslahat) {
+          <div class="tip-item">
+            <div class="tip-icon">✨</div>
+            <p>{{ maslahat }}</p>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Nutrition Info -->
+    <div class="nutrition-section">
+      <h2>📊 Oziga Xos Ma'lumotlar</h2>
+      <div class="nutrition-card">
+        <div class="nutrition-item">
+          <span class="nutrition-label">Kaloriya:</span>
+          <span class="nutrition-value">{{ retsept!.kaloriya }} kcal</span>
+        </div>
+        <div class="nutrition-item">
+          <span class="nutrition-label">Taom turi:</span>
+          <span class="nutrition-value">Asosiy taom</span>
+        </div>
+        <div class="nutrition-item">
+          <span class="nutrition-label">Mavsum:</span>
+          <span class="nutrition-value">Yil davomida</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back Button -->
+  <div class="back-section">
+    <a routerLink="/taomlar" class="back-btn">
+      ← Taomlar ro'yxatiga qaytish
+    </a>
+  </div>
+</div>
+}
+
+<!-- Loading State -->
+@if (!retsept) {
+<div class="loading-container">
+  <div class="loading-spinner"></div>
+  <p>Retsept yuklanmoqda...</p>
+</div>
+}
