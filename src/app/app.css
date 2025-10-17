@@ -15,6 +15,9 @@
   transition: var(--transition) !important;
   margin: 0 !important;
   margin-bottom: 0 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
 }
 
 .navbar:hover {
@@ -42,12 +45,7 @@
   transform: translateY(0);
 }
 
-/* Navigation Layout */
-.navbar {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-}
+/* Navigation Layout - merged with main navbar rule above */
 
 .nav-left {
   display: flex;
