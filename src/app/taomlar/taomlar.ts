@@ -30,7 +30,7 @@ export class Taomlar {
       emoji: '🍚',
       tavsif: 'O\'zbekistonning milliy taomi - go\'sht, sabzavot va guruchdan tayyorlanadi',
       hasVideo: true,
-      videoUrl: 'https://www.youtube.com/watch?v=example1'
+      videoUrl: 'https://www.youtube.com/watch?v=p96kbSQVX8E'
     },
     {
       id: 'sushi',

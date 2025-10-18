@@ -63,7 +63,7 @@ export class Retsept implements OnInit {
       ],
       kaloriya: 450,
       hasVideo: true,
-      videoUrl: 'https://www.youtube.com/watch?v=example1'
+      videoUrl: 'https://www.youtube.com/watch?v=p96kbSQVX8E'
     },
     {
       id: 'sushi',
