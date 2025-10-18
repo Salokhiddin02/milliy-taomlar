@@ -9,7 +9,12 @@
         </div>
       </div>
       <div class="card-content">
-        <h2 class="card-title">Norin</h2>
+        <div class="card-title-row">
+          <h2 class="card-title">Norin</h2>
+             <span class="video-indicator" (click)="openVideo('https://www.youtube.com/watch?v=example4', $event)">
+               🎥
+             </span>
+        </div>
         <p class="card-description">
           Norin - bu mazali va sevimli o'zbek milliy taomi. Ko'pchilik uni tayyorlash qiyin deb o'ylaydi, 
           lekin aslida bunday emas. Bu taomning o'ziga xos ta'mi va tayyorlash usuli bor.
@@ -34,7 +39,12 @@
         </div>
       </div>
       <div class="card-content">
-        <h2 class="card-title">Videoretsept: Ko'k somsa</h2>
+        <div class="card-title-row">
+          <h2 class="card-title">Videoretsept: Ko'k somsa</h2>
+          <span class="video-indicator" (click)="openVideo('https://www.youtube.com/watch?v=example2', $event)">
+            🎥
+          </span>
+        </div>
         <p class="card-description">
           Navro'z bayramini ko'k somsasiz tasavvur qilib bo'lmaydi. Ko'k somsa xamirini tayyorlash 
           usuli ko'pchilik uchun yangilik bo'lishi mumkin. Bu an'anaviy taomning maxsus retsepti.

@@ -1,42 +1,113 @@
-<nav class="navbar">
-  <!-- Logo -->
-  <div class="nav-logo">
-    <a routerLink="/" (click)="onHomeClick()" class="logo-link">
-      <span class="logo-text">milliy</span>
-    </a>
-  </div>
-
-  <!-- Navigation Links -->
-  <div class="nav-links">
-    <div class="nav-dropdown">
-      <a href="#" class="nav-link">Hafta menyusi <span class="dropdown-arrow">▼</span></a>
-    </div>
-    <div class="nav-dropdown">
-      <a href="#" class="nav-link">Retseptlar <span class="dropdown-arrow">▼</span></a>
-    </div>
-    <a routerLink="/pages/contact" class="nav-link">Kontaktlar</a>
-  </div>
-
-  <!-- Right Side -->
-  <div class="nav-right">
-    <!-- Language Selector -->
-    <div class="language-selector">
-      <span class="flag-icon">🇺🇿</span>
-      <span class="language-text">O'zbek</span>
+<nav class="navbar" [@fadeIn]>
+  <div class="navbar-container">
+    <!-- Logo Section -->
+    <div class="nav-logo">
+      <a routerLink="/" (click)="onHomeClick()" class="logo-link">
+        <span class="logo-icon">🍽️</span>
+        <span class="logo-text">Milliy Taomlar</span>
+      </a>
     </div>
 
-    <!-- Search Bar -->
-    <div class="search-container">
-      <input type="text" placeholder="Retseptni topish" class="search-input">
-      <div class="search-icon">🔍</div>
-    </div>
-
-    <!-- Theme Toggle -->
-    <button class="theme-toggle" (click)="toggleTheme()" [attr.aria-label]="isDarkMode ? 'Kunduzgi rejimga o\'tish' : 'Tungi rejimga o\'tish'">
-      <span class="theme-icon">{{ isDarkMode ? '☀️' : '🌙' }}</span>
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" (click)="toggleMobileMenu()" [class.active]="isMobileMenuOpen">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
     </button>
+
+    <!-- Navigation Links -->
+    <div class="nav-menu" [class.active]="isMobileMenuOpen">
+      <!-- Regular Links -->
+      <div class="nav-item">
+        <a routerLink="/" class="nav-link">🏠 Home</a>
+      </div>
+      <div class="nav-item">
+        <a routerLink="/taomlar" class="nav-link">🍲 Taomlar</a>
+      </div>
+      <div class="nav-item">
+        <a routerLink="/professional-tips" class="nav-link">👨‍🍳 Professional maslahatlar</a>
+      </div>
+      <div class="nav-item">
+        <a routerLink="/biz-haqimizda" class="nav-link">ℹ️ Biz haqimizda</a>
+      </div>
+    </div>
+
+    <!-- Right Side Actions -->
+    <div class="nav-actions">
+      <!-- Search Bar -->
+      <div class="search-container" [class.active]="isSearchActive">
+        <input 
+          type="text" 
+          placeholder="Retsept qidirish..." 
+          class="search-input"
+          [(ngModel)]="searchQuery"
+          (input)="onSearch()"
+          (focus)="isSearchActive = true"
+          (blur)="onSearchBlur()"
+        >
+        <button class="search-btn" (click)="performSearch()">
+          <span class="search-icon">🔍</span>
+        </button>
+      </div>
+
+      <!-- Language Selector -->
+      <div class="language-selector" (click)="toggleLanguageMenu()" [class.active]="showLanguageMenu">
+        <span class="flag-icon">{{ getCurrentFlag() }}</span>
+        <span class="language-text">{{ getCurrentLanguage() }}</span>
+        <span class="dropdown-arrow mini" [class.rotated]="showLanguageMenu">▼</span>
+        
+        <div class="language-menu" [class.show]="showLanguageMenu">
+          <a class="language-option" (click)="changeLanguage('uz'); $event.stopPropagation()">
+            <span class="flag-icon">🇺🇿</span>
+            <span>O'zbek</span>
+          </a>
+          <a class="language-option" (click)="changeLanguage('ru'); $event.stopPropagation()">
+            <span class="flag-icon">🇷🇺</span>
+            <span>Русский</span>
+          </a>
+          <a class="language-option" (click)="changeLanguage('en'); $event.stopPropagation()">
+            <span class="flag-icon">🇬🇧</span>
+            <span>English</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Theme Toggle -->
+      <button 
+        class="theme-toggle" 
+        (click)="toggleTheme()" 
+        [attr.aria-label]="isDarkMode ? 'Kunduzgi rejimga o\'tish' : 'Tungi rejimga o\'tish'"
+        [class.dark]="isDarkMode"
+      >
+        <span class="theme-icon">{{ isDarkMode ? '☀️' : '🌙' }}</span>
+      </button>
+    </div>
   </div>
 </nav>
+
+<!-- Search Results Overlay -->
+<div class="search-overlay" *ngIf="searchQuery && searchResults.length > 0" (click)="clearSearch()">
+  <div class="search-results-container" (click)="$event.stopPropagation()">
+    <div class="search-header">
+      <h3>Qidiruv natijalari ({{ searchResults.length }})</h3>
+      <button class="close-btn" (click)="clearSearch()">✕</button>
+    </div>
+    <div class="search-results">
+      <a *ngFor="let result of searchResults" [routerLink]="result.link" class="search-result-item" (click)="clearSearch()">
+        <span class="result-icon">{{ result.icon }}</span>
+        <div class="result-info">
+          <div class="result-title-row">
+            <h4>{{ result.title }}</h4>
+                   <span *ngIf="result.hasVideo" class="video-indicator" (click)="openVideo(result.videoUrl, $event)">
+                     🎥
+                   </span>
+          </div>
+          <p>{{ result.description }}</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
 
 <router-outlet></router-outlet>
 

@@ -50,6 +50,32 @@
       </div>
     </div>
 
+    <!-- Video Section -->
+    @if (retsept!.hasVideo && retsept!.videoUrl) {
+    <div class="video-section">
+      <h2>📹 Tayyorlash Videosi</h2>
+      <div class="video-container">
+        <div class="video-wrapper">
+          <iframe 
+            [src]="getEmbedUrl(retsept!.videoUrl)" 
+            frameborder="0" 
+            allowfullscreen
+            title="{{ retsept!.nomi }} tayyorlash videosi">
+          </iframe>
+        </div>
+        <div class="video-info">
+          <p class="video-description">
+            Bu videoda {{ retsept!.nomi }} tayyorlashning barcha qadamlari batafsil ko'rsatilgan. 
+            Video orqali professional oshpazlardan o'rganing!
+          </p>
+          <a [href]="retsept!.videoUrl" target="_blank" class="video-link">
+            📺 YouTube'da to'liq videoni ko'rish
+          </a>
+        </div>
+      </div>
+    </div>
+    }
+
     <!-- Step by Step Instructions -->
     <div class="instructions-section">
       <h2>📝 Tayyorlash Yo'riqnomasi</h2>

@@ -36,7 +36,7 @@ export const routes: Routes = [
       .then(m => m.GlobalTaomlarComponent) 
   },
   { 
-    path: 'professional-maslahatlar', 
+    path: 'professional-tips', 
     loadComponent: () => import('./professional-tips/professional-tips')
       .then(m => m.ProfessionalTips) 
   },

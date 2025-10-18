@@ -20,4 +20,10 @@ export class Home {
     console.log("Global Taomlar bo'limi clicked!");
     window.open('/global-taomlar', '_blank');
   };
+
+  // Video Management
+  openVideo(videoUrl: string, event: Event) {
+    event.stopPropagation();
+    window.open(videoUrl, '_blank');
+  }
 }

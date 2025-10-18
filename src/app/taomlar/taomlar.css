@@ -208,3 +208,29 @@
     padding: 2rem;
   }
 }
+
+/* Video Badge Styles */
+.taom-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.taom-title-row h3 {
+  margin: 0;
+  flex: 1;
+}
+
+.video-indicator {
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 0.8;
+  margin-left: 8px;
+}
+
+.video-indicator:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}

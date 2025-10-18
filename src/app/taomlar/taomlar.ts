@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 export interface TaomData {
   id: string;
@@ -8,12 +9,14 @@ export interface TaomData {
   vaqt: string;
   emoji: string;
   tavsif: string;
+  hasVideo?: boolean;
+  videoUrl?: string;
 }
 
 @Component({
   selector: 'app-taomlar',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, CommonModule],
   templateUrl: './taomlar.html',
   styleUrl: './taomlar.css'
 })
@@ -25,7 +28,9 @@ export class Taomlar {
       mamlakat: 'O\'zbekiston',
       vaqt: '2 soat',
       emoji: '🍚',
-      tavsif: 'O\'zbekistonning milliy taomi - go\'sht, sabzavot va guruchdan tayyorlanadi'
+      tavsif: 'O\'zbekistonning milliy taomi - go\'sht, sabzavot va guruchdan tayyorlanadi',
+      hasVideo: true,
+      videoUrl: 'https://www.youtube.com/watch?v=example1'
     },
     {
       id: 'sushi',
@@ -73,7 +78,9 @@ export class Taomlar {
       mamlakat: 'O\'zbekiston',
       vaqt: '2.5 soat',
       emoji: '🥟',
-      tavsif: 'O\'zbekistonning an\'anaviy taomi - qovoq va go\'sht bilan to\'ldirilgan xamir'
+      tavsif: 'O\'zbekistonning an\'anaviy taomi - qovoq va go\'sht bilan to\'ldirilgan xamir',
+      hasVideo: true,
+      videoUrl: 'https://www.youtube.com/watch?v=example2'
     },
     {
       id: 'shashlik',
@@ -220,4 +227,12 @@ export class Taomlar {
       tavsif: 'Rossiyaning milliy taomi - qizil lavlagi sho\'rvasi'
     }
   ];
+
+  // Video Management
+  openVideo(videoUrl: string | undefined, event: Event) {
+    if (videoUrl) {
+      event.stopPropagation();
+      window.open(videoUrl, '_blank');
+    }
+  }
 }

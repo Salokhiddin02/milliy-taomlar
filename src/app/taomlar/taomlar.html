@@ -6,7 +6,12 @@
     @for (taom of taomlar; track taom.id) {
       <div class="taom-card">
         <div class="taom-image">{{ taom.emoji }}</div>
-        <h3>{{ taom.nomi }}</h3>
+        <div class="taom-title-row">
+          <h3>{{ taom.nomi }}</h3>
+          <span *ngIf="taom.hasVideo" class="video-indicator" (click)="openVideo(taom.videoUrl, $event)">
+            🎥
+          </span>
+        </div>
         <p>{{ taom.tavsif }}</p>
         <div class="taom-info">
           <span class="country">{{ taom.mamlakat }}</span>

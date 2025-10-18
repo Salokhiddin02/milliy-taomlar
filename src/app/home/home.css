@@ -98,13 +98,34 @@
   padding: 1.5rem;
 }
 
+.card-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
 .card-title {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin: 0 0 1rem 0;
+  margin: 0;
   line-height: 1.3;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  flex: 1;
+}
+
+.video-indicator {
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 0.8;
+  margin-left: 8px;
+}
+
+.video-indicator:hover {
+  opacity: 1;
+  transform: scale(1.1);
 }
 
 .card-description {
